@@ -80,9 +80,9 @@ async def on_message(message):
         async for msg in message.channel.history(limit=100000):
             if msg.author == message.author:
                 counter += 1
-        await  message.channel.send('You have sent '+str(counter)+' messages in this channel')
+        await  message.channel.send(str(message.author.name) + ' has sent '+str(counter)+' messages in this channel')
 
-
+#comment
 
 client.run(TOKEN)
 
