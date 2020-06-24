@@ -1,9 +1,10 @@
 
 import os
 import random
-
 import discord
+from discord.ext.commands import bot
 from dotenv import load_dotenv
+
 
 
 
@@ -49,7 +50,7 @@ async def on_message(message):
         'meme12.png'
     ]
 
-    if message.content == '!barriebot':
+    if message.content == '!barriequote':
         response = random.choice(Barrie_quotes)
         await message.channel.send(response)
 
@@ -66,6 +67,20 @@ async def on_message(message):
         response2 = random.choice(memes)
         await message.channel.send(file=discord.File(response2))
 
+    if 'women' in message.content.lower() or 'whore' in message.content.lower():
+        emoji = '<:barriebot:721780629603221554>'
+        await message.add_reaction(emoji)
+    if 'spod' in message.content.lower():
+        emoji = '<:Rtard: 271006409787834377>'
+        await message.add_reaction(emoji)
+
+    if message.content.startswith('!messagecount'):
+        await message.channel.send('Calculating...')
+        counter = 0
+        async for msg in message.channel.history(limit=100000):
+            if msg.author == message.author:
+                counter += 1
+        await  message.channel.send('You have sent '+str(counter)+' messages in this channel')
 
 
 
